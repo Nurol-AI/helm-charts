@@ -15,7 +15,6 @@ on:
   push:
     tags:
       - 'nurops-event-manager-v*'
-      - 'nuros-reverse-proxy-v*'
   pull_request:
     branches:
       - main
@@ -69,7 +68,7 @@ jobs:
   publish:
     needs: lint-and-test
     runs-on: self-hosted
-    if: github.event_name == 'push' && (startsWith(github.ref, 'refs/tags/nurops-event-manager-v') || startsWith(github.ref, 'refs/tags/nuros-reverse-proxy-v'))
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/nurops-event-manager-v')
     env:
       HELM_HOME: /tmp/helm
     steps:
@@ -138,7 +137,7 @@ jobs:
             echo "Target version: $TARGET_VERSION"
           else
             echo "ERROR: Tag format not recognized. Expected: chartname-vX.Y.Z"
-            echo "Examples: nurops-event-manager-v0.2.0, nuros-reverse-proxy-v0.2.0"
+            echo "Example: nurops-event-manager-v0.2.0"
             exit 1
           fi
 
