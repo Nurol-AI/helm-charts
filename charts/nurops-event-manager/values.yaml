@@ -29,7 +29,7 @@ eventManager:
   # Container image configuration
   image:
     repository: nurops/nurops-event-manager
-    tag: "latest"
+    tag: "0.2.3"
     pullPolicy: IfNotPresent
     # Optional: specify image pull secrets
     pullSecrets: []
